@@ -10,4 +10,4 @@ func _physics_process(delta):
     move_and_collide(motion * speed * delta)
 
 func is_moving():
-    return motion.length != 0
+    return motion.length() != 0
