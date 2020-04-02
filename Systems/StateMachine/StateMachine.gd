@@ -5,6 +5,7 @@ var state = null setget set_state
 var previous_state = null
 var states = {}
 
+signal state_changed
 
 func add_state(state_name):
     states[state_name] = states.size()
@@ -18,6 +19,7 @@ func get_state_name(state):
 func set_state(new_state):
     previous_state = state
     state = new_state
+    emit_signal("state_changed",  get_state_name(new_state))
 
     if previous_state != null:
         __exit_state(previous_state, state)
