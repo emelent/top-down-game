@@ -3,6 +3,7 @@ extends StateMachine
 
 onready var player:Player  = get_parent()
 
+
 func _ready():
 
     add_state("walk")
@@ -58,9 +59,10 @@ func __handle_movement_input():
     # horizontal motion
     if Input.is_action_pressed(player.input_name + Global.PLAYER_ACTIONS.move_left):
         player.motion.x = -1
+        player.pivot.scale.x = -1
     elif Input.is_action_pressed(player.input_name + Global.PLAYER_ACTIONS.move_right):
         player.motion.x = 1
-
+        player.pivot.scale.x = 1
     # vertical motion
     if Input.is_action_pressed(player.input_name + Global.PLAYER_ACTIONS.move_up):
         player.motion.y = -1
