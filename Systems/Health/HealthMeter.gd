@@ -13,9 +13,9 @@ onready var health: HealthSystem = get_node_or_null(health_path)
 
 func _ready():
     # connect health system signals
-    health.connect("on_damaged", self, "__on_damaged")
-    health.connect("on_healed", self, "__on_healed")
-    health.connect("on_hp_changed", self, "__on_changed")
+    health.connect("damaged", self, "__on_damaged")
+    health.connect("healed", self, "__on_healed")
+    health.connect("hp_changed", self, "__on_changed")
     pass
 
 
@@ -42,9 +42,9 @@ func __on_damaged(pts):
 
 
 func __on_healed(pts):
-    update()
     pass
 
 
 func __on_changed(pts):
+    update()
     pass

@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Turret/Turret.tscn" type="PackedScene" id=2]
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 473.157, 241.955 )
+position = Vector2( 482.358, 106.241 )
+
+[node name="Turret" parent="." instance=ExtResource( 2 )]
+position = Vector2( 126.653, 308.459 )
+rotation = 1.5708
+width = 50
+height = 50
+fire_rate = 2.0

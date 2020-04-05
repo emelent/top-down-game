@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Systems/PlayerDebug/PlayerDebug.gd" type="Script" id=1]
+
+
+[node name="PlayerDebug" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="PlayerName" type="Label" parent="."]
+margin_left = -49.6782
+margin_top = -51.8289
+margin_right = 38.3218
+margin_bottom = -37.8289
+grow_horizontal = 2
+text = "PLAYER NAME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerState" type="Label" parent="."]
+margin_left = -47.5275
+margin_top = 42.8025
+margin_right = 40.4725
+margin_bottom = 56.8025
+grow_horizontal = 2
+text = "STATE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

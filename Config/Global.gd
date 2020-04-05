@@ -12,3 +12,15 @@ const PLAYER_ACTIONS = {
     "move_up": "move_up",
     "move_down": "move_down",
 }
+
+const GROUP_NAMES = {
+    "players": "players",
+    "projectiles": "projectiles",
+    "walls": "walls",
+    "enemies": "enemies",
+    "collectables": "collectables",
+    "objects": "objects",
+    "foreground": "foreground",
+    "hitboxes": "hitboxes",
+    "hurtboxes": "hurtboxes"
+}
