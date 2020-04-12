@@ -11,6 +11,7 @@ const PLAYER_ACTIONS = {
     "move_right": "move_right",
     "move_up": "move_up",
     "move_down": "move_down",
+    "fire": "fire"
 }
 
 const GROUP_NAMES = {

@@ -2,8 +2,8 @@ extends Node2D
 #class_name HealthMeter
 
 export(NodePath) var health_path
-export(Color) var background_color = Color.yellow
-export(Color) var meter_color = Color.red
+export(Color) var background_color = Color.black
+export(Color) var meter_color = Color.white
 export(float) var height = 10
 export(float) var width = 100
 export(Vector2) var padding = Vector2(2, 2)

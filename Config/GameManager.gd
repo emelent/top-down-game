@@ -5,6 +5,9 @@ const MAX_PLAYERS = 4
 var player_inputs = {}
 var player_ids = [0, 1, 2, 3]
 
+func _ready():
+    Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 func _input(event):
     if event.is_action_pressed("quit") and OS.is_debug_build():
         get_tree().quit()

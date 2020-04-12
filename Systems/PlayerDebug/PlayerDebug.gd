@@ -2,6 +2,7 @@ extends Node2D
 
 
 export(float) var hpDelta = 10
+export(bool) var display = true setget set_display
 
 onready var player: Player = get_parent()
 onready var player_name_label: Label = $PlayerName
@@ -23,8 +24,20 @@ func __setup():
     player.health.connect("hp_changed", self, "__on_hp_changed")
 
 func __on_state_changed(new_state):
+    if !display: return
     if new_state == null: return
     player_state_label.text = new_state
 
 func __on_hp_changed(new_hp):
+    if !display: return
     player_name_label.text = "%s (%d)" % [player.player_name, new_hp]
+
+
+func set_display(new_display):
+    display = new_display
+    if !display:
+        player_name_label.hide()
+        player_state_label.hide()
+    else:
+        player_name_label.show()
+        player_state_label.show()

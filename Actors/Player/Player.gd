@@ -3,14 +3,15 @@ class_name Player
 
 export(Global.PlayerInput) var player_input = Global.PlayerInput.KEYBOARD setget set_player_input
 export(Color) var player_color = Color.blueviolet
+export var max_crosshairs_dist = 120
 
-onready var pivot = $Pivot
-onready var animated_sprite: AnimatedSprite = $Pivot/AnimatedSprite
-onready var hurtbox: Area2D = $Pivot/Hurtbox
+
 onready var state_machine: StateMachine = $StateMachine
 onready var health: HealthSystem = $HealthSystem
 onready var name_label = $NameLabel
 onready var state_label = $StateLabel
+onready var mech: BasicMech = $BasicMech
+onready var crosshairs = $CrossHairs
 
 
 var input_name = "input_%d__"  % (player_input)
@@ -24,12 +25,22 @@ signal player_died
 func _ready():
     # just for now, we'll sort this later when we have controls
     set_player_input(player_input)
-    animated_sprite.self_modulate = player_color
+    mech.color = player_color
 
     # connect hurtbox signals
-    hurtbox.connect("area_entered", self, "__on_hurtbox_area_entered")
+    mech.hurtbox.connect("area_entered", self, "__on_hurtbox_area_entered")
 
-    pass
+
+func _process(delta):
+    var mouse_pos = get_global_mouse_position()
+    var crosshairs_pos = (mouse_pos - global_position).normalized() * max_crosshairs_dist
+
+    crosshairs.rotation = Vector2.RIGHT.angle_to(mouse_pos) * 2
+    crosshairs.position = crosshairs_pos
+
+# ----------------------
+# custom methods
+# ----------------------
 
 func set_player_input(new_value):
     player_input = new_value

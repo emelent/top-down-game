@@ -1,16 +1,88 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Turret/Turret.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/ProjectileBoundary/ProjectileBoundary.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Square/Square.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1237, 18.7589 )
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 482.358, 106.241 )
+position = Vector2( 471.111, 307.484 )
+speed = 200.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( -2.24841, 0 )
+current = true
 
 [node name="Turret" parent="." instance=ExtResource( 2 )]
-position = Vector2( 126.653, 308.459 )
+position = Vector2( 39.5612, 49.9923 )
 rotation = 1.5708
-width = 50
-height = 50
-fire_rate = 2.0
+fire_rate = 1.5
+projectile_speed = 700.0
+
+[node name="Turret2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 38.1565, 273.341 )
+rotation = 1.5708
+fire_rate = 1.5
+projectile_speed = 700.0
+
+[node name="Turret3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 31.4114, 556.636 )
+rotation = 1.5708
+fire_rate = 1.5
+projectile_speed = 700.0
+
+[node name="Turret4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 429.373, 680.296 )
+fire_rate = 1.5
+projectile_speed = 700.0
+
+[node name="Turret6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1013.14, 829.836 )
+fire_rate = 1.5
+projectile_speed = 700.0
+
+[node name="Turret5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 768.877, -394.425 )
+rotation = 3.14159
+fire_rate = 1.5
+projectile_speed = 700.0
+
+[node name="ProjectileBoundary" parent="." instance=ExtResource( 3 )]
+position = Vector2( -863.488, 101.793 )
+
+[node name="CollisionShape2D" parent="ProjectileBoundary" index="0"]
+position = Vector2( -23.9526, 30.9763 )
+
+[node name="ProjectileBoundary2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1586.57, 147.425 )
+
+[node name="ProjectileBoundary3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 333.461, 828.387 )
+
+[node name="CollisionShape2D" parent="ProjectileBoundary3" index="0"]
+position = Vector2( 0, 295.416 )
+shape = SubResource( 1 )
+
+[node name="ProjectileBoundary4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 333.461, -1119.76 )
+
+[node name="CollisionShape2D" parent="ProjectileBoundary4" index="0"]
+position = Vector2( 0, 295.416 )
+shape = SubResource( 1 )
+
+[node name="Square" parent="." instance=ExtResource( 4 )]
+position = Vector2( 484.136, 156.295 )
+color = Color( 0.992157, 0.937255, 0.141176, 1 )
+
+[editable path="ProjectileBoundary"]
+
+[editable path="ProjectileBoundary2"]
+
+[editable path="ProjectileBoundary3"]
+
+[editable path="ProjectileBoundary4"]

@@ -5,10 +5,25 @@ onready var player:Player  = get_parent()
 
 
 func _ready():
-
+    add_state("fire")
     add_state("walk")
     add_state("idle")
     call_deferred("set_state", states.idle)
+
+    # connect mech fire_cooldown_timer
+    call_deferred("__setup")
+
+func __setup():
+    player.mech.fire_cooldown_timer.connect("timeout", self, "__fire_cooldown_timeout")
+
+
+func _input(event):
+    if Input.is_action_just_pressed(player.input_name + Global.PLAYER_ACTIONS.fire):
+        if player.mech.fire():
+            set_state(states.fire)
+            player.motion = Vector2.ZERO
+
+
 
 func __get_next_state(delta):
     match state:
@@ -20,14 +35,19 @@ func __get_next_state(delta):
             if not player.is_moving():
                 return states.idle
 
+
     return null
 
+
 func __enter_state(new_state, old_state):
-    player.animated_sprite.animation = get_state_name(new_state)
+    player.mech.sprite.animation = get_state_name(new_state)
     match new_state:
         states.idle:
             pass
         states.walk:
+            pass
+        states.fire:
+            player.motion = Vector2.ZERO
             pass
 
 
@@ -59,13 +79,19 @@ func __handle_movement_input():
     # horizontal motion
     if Input.is_action_pressed(player.input_name + Global.PLAYER_ACTIONS.move_left):
         player.motion.x = -1
-        player.pivot.scale.x = -1
+        player.mech.rotation_degrees = -90
     elif Input.is_action_pressed(player.input_name + Global.PLAYER_ACTIONS.move_right):
         player.motion.x = 1
-        player.pivot.scale.x = 1
+        player.mech.rotation_degrees = 90
+
     # vertical motion
-    if Input.is_action_pressed(player.input_name + Global.PLAYER_ACTIONS.move_up):
+    elif Input.is_action_pressed(player.input_name + Global.PLAYER_ACTIONS.move_up):
         player.motion.y = -1
+        player.mech.rotation_degrees = 0
+
     elif Input.is_action_pressed(player.input_name + Global.PLAYER_ACTIONS.move_down):
         player.motion.y = 1
+        player.mech.rotation_degrees = 180
 
+func __fire_cooldown_timeout():
+    set_state(states.idle)
