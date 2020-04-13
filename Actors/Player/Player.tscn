@@ -30,6 +30,8 @@ script = ExtResource( 5 )
 hp = 40.0
 
 [node name="BasicMech" parent="." instance=ExtResource( 1 )]
+fire_rate = 4.0
+projectile_speed = 1500.0
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2( 1.61419, 3.04916 )
