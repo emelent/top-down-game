@@ -13,6 +13,7 @@ extents = Vector2( 1237, 18.7589 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 471.111, 307.484 )
 speed = 200.0
+player_color = Color( 0.94902, 0.94902, 0.94902, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( -2.24841, 0 )
