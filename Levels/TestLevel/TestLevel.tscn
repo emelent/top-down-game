@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Turret/Turret.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/ProjectileBoundary/ProjectileBoundary.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Square/Square.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Projectile/Projectile.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1237, 18.7589 )
@@ -24,34 +25,40 @@ position = Vector2( 39.5612, 49.9923 )
 rotation = 1.5708
 fire_rate = 1.5
 projectile_speed = 700.0
+projectile_scene = ExtResource( 5 )
 
 [node name="Turret2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 38.1565, 273.341 )
 rotation = 1.5708
 fire_rate = 1.5
 projectile_speed = 700.0
+projectile_scene = ExtResource( 5 )
 
 [node name="Turret3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 31.4114, 556.636 )
 rotation = 1.5708
 fire_rate = 1.5
 projectile_speed = 700.0
+projectile_scene = ExtResource( 5 )
 
 [node name="Turret4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 429.373, 680.296 )
 fire_rate = 1.5
 projectile_speed = 700.0
+projectile_scene = ExtResource( 5 )
 
 [node name="Turret6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1013.14, 829.836 )
 fire_rate = 1.5
 projectile_speed = 700.0
+projectile_scene = ExtResource( 5 )
 
 [node name="Turret5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 768.877, -394.425 )
 rotation = 3.14159
 fire_rate = 1.5
 projectile_speed = 700.0
+projectile_scene = ExtResource( 5 )
 
 [node name="ProjectileBoundary" parent="." instance=ExtResource( 3 )]
 position = Vector2( -863.488, 101.793 )
@@ -79,6 +86,8 @@ shape = SubResource( 1 )
 [node name="Square" parent="." instance=ExtResource( 4 )]
 position = Vector2( 484.136, 156.295 )
 color = Color( 0.992157, 0.937255, 0.141176, 1 )
+line_width = 1.0
+outline = false
 
 [editable path="ProjectileBoundary"]
 

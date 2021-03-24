@@ -16,34 +16,34 @@ var can_fire = true
 
 
 func _ready():
-    # connect fire cooldown timer
-    fire_cooldown_timer.wait_time =  1 / fire_rate
-    fire_cooldown_timer.connect("timeout", self, "__fire_cooldown_timeout")
+	# connect fire cooldown timer
+	fire_cooldown_timer.wait_time =  1 / fire_rate
+	fire_cooldown_timer.connect("timeout", self, "__fire_cooldown_timeout")
 
 
 func __fire_cooldown_timeout():
-    can_fire = true
+	can_fire = true
 
 
 func fire():
-    if not can_fire: return false
+	if not can_fire: return false
 
-    can_fire = false
-    fire_cooldown_timer.start()
-    # spawn projectile
-    var projectile: Projectile = projectile_scene.instance()
-    projectile.global_position = fire_point.global_position
-    projectile.rotation = rotation
-    projectile.initial_speed = projectile_speed
+	can_fire = false
+	fire_cooldown_timer.start()
+	# spawn projectile
+	var projectile: Projectile = projectile_scene.instance()
+	projectile.global_position = fire_point.global_position
+	projectile.rotation = rotation
+	projectile.initial_speed = projectile_speed
 #    projectile.velocity = projectile_speed
-    get_viewport().add_child(projectile)
-    return true
+	get_viewport().add_child(projectile)
+	return true
 
 func set_fire_rate(new_fire_rate):
-    fire_rate = new_fire_rate
-    if fire_cooldown_timer  != null:
-        fire_cooldown_timer.wait_time =  1 / fire_rate
+	fire_rate = new_fire_rate
+	if fire_cooldown_timer  != null:
+		fire_cooldown_timer.wait_time =  1 / fire_rate
 
 func set_color(new_color):
-    color = new_color
-    sprite.modulate = color
+	color = new_color
+	sprite.modulate = color
